@@ -10,9 +10,11 @@ import SwiftUI
 @main
 struct Text_MemifyApp: App {
     var body: some Scene {
-        MenuBarExtra("Text Memify", systemImage: "character.cursor.ibeam") {
+        WindowGroup {
             ContentView()
+                .windowResizeBehavior(.disabled)
+                .windowFullScreenBehavior(.disabled)
         }
-        .menuBarExtraStyle(.window)
+        .windowStyle(.hiddenTitleBar)
     }
 }

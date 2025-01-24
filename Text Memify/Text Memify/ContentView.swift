@@ -28,6 +28,7 @@ struct ContentView: View {
                         Text("w i d e").tag(0)
                         Text("W I D E").tag(1)
                         Text("(desreveR) Reversed").tag(2)
+                        Text("Up AnD dOwN").tag(3)
                     } label: {
                         Text("Options:")
                     }
