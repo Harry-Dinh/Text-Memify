@@ -9,12 +9,47 @@ import SwiftUI
 
 @main
 struct Text_MemifyApp: App {
+    
+    @State private var viewModel = TMViewModel.instance
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .windowResizeBehavior(.disabled)
                 .windowFullScreenBehavior(.disabled)
         }
-        .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 450, height: 170)
+        .commands {
+            CommandMenu("Format") {
+                Picker(selection: $viewModel.selectedOption) {
+                    Text("w i d e").tag(0)
+                        .keyboardShortcut("1")
+                    Text("W I D E").tag(1)
+                        .keyboardShortcut("2")
+                    Text("(desreveR) Reversed").tag(2)
+                        .keyboardShortcut("3")
+                    Text("Up AnD dOwN").tag(3)
+                        .keyboardShortcut("4")
+                } label: {
+                    EmptyView()
+                }
+                .pickerStyle(.inline)
+            }
+            
+            CommandGroup(replacing: .undoRedo) {
+                EmptyView()
+            }
+            
+            CommandGroup(replacing: .newItem) {
+                EmptyView()
+            }
+            
+            CommandGroup(replacing: .pasteboard) {
+                Button("Clear Text Fields") {
+                    viewModel.clearFields()
+                }
+                .keyboardShortcut("C", modifiers: [.shift, .command])
+            }
+        }
     }
 }

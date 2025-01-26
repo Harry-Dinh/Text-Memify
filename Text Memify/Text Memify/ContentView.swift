@@ -13,48 +13,44 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Text Memify")
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }
-            
-            GroupBox {
-                Form {
-                    TextField("Text:", text: $viewModel.originalText)
-                    
-                    Picker(selection: $viewModel.selectedOption) {
-                        Text("w i d e").tag(0)
-                        Text("W I D E").tag(1)
-                        Text("(desreveR) Reversed").tag(2)
-                        Text("Up AnD dOwN").tag(3)
-                    } label: {
-                        Text("Options:")
-                    }
-                    
-                    TextField("Result:", text: $viewModel.resultText)
-                        .disabled(true)
+            Form {
+                TextField("Text:", text: $viewModel.originalText)
+                
+                Picker(selection: $viewModel.selectedOption) {
+                    Text("w i d e").tag(0)
+                    Text("W I D E").tag(1)
+                    Text("(desreveR) Reversed").tag(2)
+                    Text("Up AnD dOwN").tag(3)
+                } label: {
+                    Text("Options:")
                 }
-                .textFieldStyle(.roundedBorder)
-                .padding()
+                
+                TextField("Result:", text: $viewModel.resultText)
+                    .disabled(true)
             }
+            .textFieldStyle(.roundedBorder)
+            .padding()
             
             HStack {
                 Spacer()
                 
-                Button("Copy to Clipboard") {}
-                    .disabled(viewModel.resultText.isEmpty)
-                Button("Memify!") { viewModel.memify() }
-                    .keyboardShortcut(.defaultAction)
-                    .disabled(viewModel.originalText.isEmpty)
+                Button("Clear") {
+                    viewModel.clearFields()
+                }
+                
+                Button("Memify and Copy to Clipboard") {
+                    viewModel.memify()
+                    viewModel.copyToClipboard()
+                }
+                .keyboardShortcut(.defaultAction)
+                .disabled(viewModel.originalText.isEmpty)
             }
         }
         .padding()
+        .frame(minWidth: 450, maxWidth: 450)
     }
 }
 
 #Preview {
     ContentView()
-        .frame(width: 350)
 }
