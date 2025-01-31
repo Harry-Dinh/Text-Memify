@@ -17,7 +17,7 @@ This app was written 100% in Swift, with its user interface written in SwiftUI. 
 - Up and Down: `uP aNd DoWn`
 
 ## Other Features
-- [ ] Save default meme format in app settings
+- [x] Save default meme format in app settings
 - [ ] View past entries in the History window
 - [ ] Select, copy and delete past entries
 
