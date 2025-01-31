@@ -16,5 +16,10 @@ This app was written 100% in Swift, with its user interface written in SwiftUI. 
 - Reversed: `desreveR`
 - Up and Down: `uP aNd DoWn`
 
+## Other Features
+- [ ] Save default meme format in app settings
+- [ ] View past entries in the History window
+- [ ] Select, copy and delete past entries
+
 ## About the Developer
 Hi! I'm Harry, the developer of *Text Memify* and many other cool iOS/macOS apps! You can check out [my GitHub profile](https://github.com/Harry-Dinh) to see more of those projects that I worked on. I made this app and many others to enhance my workflow on my Apple devices, and I thought it might be useful to others as well. Therefore, I made some of my projects open-source, allowing people to use them to enhance their productivity as well!
