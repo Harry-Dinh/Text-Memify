@@ -58,6 +58,18 @@ class TMViewModel {
         resultText = ""
     }
     
+    public func saveDefaultMemeOption(_ memeOption: Int) {
+        print("saveDefaultMemeOption() called")
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(memeOption, forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
+        print("Default meme option successfully saved")
+    }
+    
+    public func loadDefaultMemeOption() -> Int {
+        let userDefaults = UserDefaults.standard
+        return userDefaults.integer(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
+    }
+    
     private func widenText(capitalized: Bool) {
         var temp = originalText
         if capitalized {

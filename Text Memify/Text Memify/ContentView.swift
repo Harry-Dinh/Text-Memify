@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var viewModel = TMViewModel.instance
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct ContentView: View {
                     Text("(desreveR) Reversed").tag(2)
                     Text("Up AnD dOwN").tag(3)
                 } label: {
-                    Text("Options:")
+                    Text("Meme Format:")
                 }
                 
                 TextField("Result:", text: $viewModel.resultText)
@@ -32,6 +33,10 @@ struct ContentView: View {
             .padding()
             
             HStack {
+                Button("Show History") {
+                    openWindow.callAsFunction(id: TMConstants.HISTORY_WINDOW_ID)
+                }
+                
                 Spacer()
                 
                 Button("Clear") {
@@ -47,7 +52,7 @@ struct ContentView: View {
             }
         }
         .padding()
-        .frame(minWidth: 450, maxWidth: 450)
+        .frame(minWidth: TMConstants.MAIN_VIEW_DIMENSION, maxWidth: TMConstants.MAIN_VIEW_DIMENSION)
     }
 }
 

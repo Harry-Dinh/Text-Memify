@@ -12,8 +12,12 @@ struct Text_MemifyApp: App {
     
     @State private var viewModel = TMViewModel.instance
     
+    init() {
+        viewModel.selectedOption = viewModel.loadDefaultMemeOption()
+    }
+    
     var body: some Scene {
-        WindowGroup {
+        Window("Text Memify", id: TMConstants.MAIN_WINDOW_ID) {
             ContentView()
                 .windowResizeBehavior(.disabled)
                 .windowFullScreenBehavior(.disabled)
@@ -50,6 +54,16 @@ struct Text_MemifyApp: App {
                 }
                 .keyboardShortcut("C", modifiers: [.shift, .command])
             }
+        }
+        
+        Window("History", id: TMConstants.HISTORY_WINDOW_ID) {
+            HistoryView()
+                .windowFullScreenBehavior(.disabled)
+        }
+        
+        // The settings/preferences pane for Text Memify
+        Settings {
+            TMSettingsView()
         }
     }
 }
