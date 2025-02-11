@@ -12,10 +12,18 @@ struct HistoryView: View {
     @State private var viewModel = TMViewModel.instance
     
     var body: some View {
-        List {
-            ForEach(0..<10) { _ in
-                Text("NCC-1701")
-                    .selectionDisabled(false)
+        List(Array(viewModel.memeHistory.keys), id: \.self) { key in
+            if let value = viewModel.memeHistory[key] {
+                VStack(alignment: .leading) {
+                    Text(key)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Text(value)
+                }
+                .contextMenu {
+                    Button("Copy") {}
+                    Button("Delete") {}
+                }
             }
         }
         .listStyle(.inset)
@@ -23,14 +31,17 @@ struct HistoryView: View {
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button(action: {}) {
-                    Image(systemName: "doc.on.doc")
+                    Label("Copy", systemImage: "doc.on.doc")
                 }
-                .accessibilityLabel(Text("Copy to Clipboard"))
                 
-                Button(action: {}) {
-                    Image(systemName: "trash")
+                Menu {
+                    Button("Delete Entry") {}
+                    Button("Clear History...") {}
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                } primaryAction: {
+                    print("Delete entry called")
                 }
-                .accessibilityLabel(Text("Delete Entry"))
             }
         }
     }

@@ -27,7 +27,6 @@ struct ContentView: View {
                 }
                 
                 TextField("Result:", text: $viewModel.resultText)
-                    .disabled(true)
             }
             .textFieldStyle(.roundedBorder)
             .padding()
@@ -44,8 +43,9 @@ struct ContentView: View {
                 }
                 
                 Button("Memify and Copy to Clipboard") {
-                    viewModel.memify()
-                    viewModel.copyToClipboard()
+                    viewModel.memify()              // Memify the original text
+                    viewModel.saveToHistory()       // Save entry to history
+                    viewModel.copyToClipboard()     // Copy result text to clipboard
                 }
                 .keyboardShortcut(.defaultAction)
                 .disabled(viewModel.originalText.isEmpty)

@@ -13,10 +13,14 @@ class TMViewModel {
     
     public static let instance = TMViewModel()
     
+    private var canCopyToClipboard = false
+    private let userDefault = UserDefaults.standard
+    
     public var originalText = ""
     public var selectedOption = 0
     public var resultText = ""
-    private var canCopyToClipboard = false
+    public var memeHistory: [String: String] = [:]
+    public var storeDuplicates = true
     
     public func memify() {
         switch selectedOption {
@@ -59,15 +63,34 @@ class TMViewModel {
     }
     
     public func saveDefaultMemeOption(_ memeOption: Int) {
-        print("saveDefaultMemeOption() called")
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(memeOption, forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
-        print("Default meme option successfully saved")
+        userDefault.set(memeOption, forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
     }
     
     public func loadDefaultMemeOption() -> Int {
-        let userDefaults = UserDefaults.standard
-        return userDefaults.integer(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
+        return userDefault.integer(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
+    }
+    
+    public func saveToHistory() {
+        // No need to check if the string is empty because in the UI, the button is already disabled if empty
+        // Check if there is a duplicate (if the option is on)
+        if storeDuplicates {
+            if let value = memeHistory[originalText], value == resultText {
+                // Exit to prevent adding a duplicate
+                return
+            }
+        }
+        
+        // Otherwise, proceed to append the entry then write the latest version of the dictionary to UserDefaults
+        memeHistory[originalText] = resultText
+        userDefault.set(memeHistory, forKey: TMConstants.ENTRIES_HISTORY_KEY)
+    }
+    
+    public func loadHistory() {
+        guard let historyEntries = userDefault.object(forKey: TMConstants.ENTRIES_HISTORY_KEY) as? [String: String] else {
+            print("No entries detected in local storage")
+            return
+        }
+        memeHistory = historyEntries
     }
     
     private func widenText(capitalized: Bool) {

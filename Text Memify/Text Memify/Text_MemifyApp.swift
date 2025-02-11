@@ -14,6 +14,7 @@ struct Text_MemifyApp: App {
     
     init() {
         viewModel.selectedOption = viewModel.loadDefaultMemeOption()
+        viewModel.loadHistory()
     }
     
     var body: some Scene {
