@@ -18,7 +18,7 @@ This app was written 100% in Swift, with its user interface written in SwiftUI. 
 
 ## Other Features
 - [x] Save default meme format in app settings
-- [ ] View past entries in the History window
+- [x] View past entries in the History window
 - [ ] Select, copy and delete past entries
 
 ## About the Developer
