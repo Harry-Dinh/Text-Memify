@@ -24,7 +24,7 @@ struct TMSettingsView: View {
                 // Save the default meme option
                 viewModel.saveDefaultMemeOption(defaultMemeOption)
             }
-            
+
             Section {
                 Toggle(isOn: $viewModel.storeDuplicates) {
                     VStack(alignment: .leading) {
@@ -38,6 +38,12 @@ struct TMSettingsView: View {
         }
         .frame(width: TMConstants.SETTINGS_PANE_WIDTH)
         .padding()
+        .alert("Delete All Entries?", isPresented: $viewModel.showDeleteAllAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("Delete All", role: .destructive) {
+                viewModel.clearHistory()
+            }
+        }
     }
 }
 

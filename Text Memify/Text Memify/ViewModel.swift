@@ -15,13 +15,14 @@ class TMViewModel {
     
     private var canCopyToClipboard = false
     private let userDefault = UserDefaults.standard
-    
+
     public var originalText = ""
     public var selectedOption = 0
     public var resultText = ""
     public var memeHistory: [String: String] = [:]
     public var storeDuplicates = true
-    
+    public var showDeleteAllAlert = false
+
     public func memify() {
         switch selectedOption {
             case 0:
@@ -92,7 +93,20 @@ class TMViewModel {
         }
         memeHistory = historyEntries
     }
-    
+
+    public func deleteEntry(with key: String) {
+        if memeHistory.removeValue(forKey: key) == nil {
+            print("Unable to remove entry with key: \(key)")
+        } else {
+            print("Successfully removed entry")
+        }
+    }
+
+    public func clearHistory() {
+        memeHistory.removeAll()                                             // Remove all entries from dictionary
+        userDefault.removeObject(forKey: TMConstants.ENTRIES_HISTORY_KEY)   // Remove entries from UserDefaults
+    }
+
     private func widenText(capitalized: Bool) {
         var temp = originalText
         if capitalized {
