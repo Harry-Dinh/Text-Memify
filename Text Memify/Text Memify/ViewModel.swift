@@ -10,11 +10,11 @@ import SwiftUI
 
 @Observable
 class TMViewModel {
-    
     public static let instance = TMViewModel()
     
     private var canCopyToClipboard = false
     private let userDefault = UserDefaults.standard
+    private let pasteboard = NSPasteboard.general
 
     public var originalText = ""
     public var selectedOption = 0
@@ -52,12 +52,19 @@ class TMViewModel {
         if resultText.isEmpty || !canCopyToClipboard {
             return
         }
-        
-        let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setString(resultText, forType: .string)
     }
-    
+
+    public func copyToPasteboard(_ text: String?) {
+        guard let unwrappedText = text,
+              !unwrappedText.isEmpty || canCopyToClipboard else {
+            return
+        }
+        pasteboard.clearContents()
+        pasteboard.setString(unwrappedText, forType: .string)
+    }
+
     public func clearFields() {
         originalText = ""
         resultText = ""
@@ -72,16 +79,17 @@ class TMViewModel {
     }
     
     public func saveToHistory() {
-        // No need to check if the string is empty because in the UI, the button is already disabled if empty
-        // Check if there is a duplicate (if the option is on)
+        if resultText.isEmpty && originalText.isEmpty {
+            return
+        }
+
         if storeDuplicates {
             if let value = memeHistory[originalText], value == resultText {
                 // Exit to prevent adding a duplicate
                 return
             }
         }
-        
-        // Otherwise, proceed to append the entry then write the latest version of the dictionary to UserDefaults
+
         memeHistory[originalText] = resultText
         userDefault.set(memeHistory, forKey: TMConstants.ENTRIES_HISTORY_KEY)
     }
@@ -100,6 +108,10 @@ class TMViewModel {
         } else {
             print("Successfully removed entry")
         }
+    }
+
+    public func updateHistoryList() {
+        userDefault.setValue(memeHistory, forKey: TMConstants.ENTRIES_HISTORY_KEY)
     }
 
     public func clearHistory() {
