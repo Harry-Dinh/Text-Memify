@@ -32,6 +32,7 @@ struct ContentView: View {
 
     private var originalTextField: some View {
         TextField("Text:", text: $viewModel.originalText)
+            .accessibilityIdentifier("originalTextField")
     }
 
     private var memeModeSelector: some View {
@@ -43,10 +44,12 @@ struct ContentView: View {
         } label: {
             Text("Meme Format:")
         }
+        .accessibilityIdentifier("memeModeSelector")
     }
 
     private var resultTextField: some View {
         TextField("Result:", text: $viewModel.resultText)
+            .accessibilityIdentifier("resultTextField")
     }
 
     private var actionButtonsSection: some View {
@@ -62,12 +65,16 @@ struct ContentView: View {
         Button("Show History") {
             openWindow.callAsFunction(id: TMConstants.HISTORY_WINDOW_ID)
         }
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("showHistoryButton")
     }
 
     private var clearButton: some View {
         Button("Clear") {
             viewModel.clearFields()
         }
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("clearButton")
     }
 
     private var memeAndCopyToClipboardButton: some View {
@@ -78,6 +85,8 @@ struct ContentView: View {
         }
         .keyboardShortcut(.defaultAction)
         .disabled(viewModel.originalText.isEmpty)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("memeAndCopyToClipboardButton")
     }
 }
 

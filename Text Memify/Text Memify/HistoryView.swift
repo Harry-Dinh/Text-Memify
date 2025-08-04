@@ -60,6 +60,8 @@ struct HistoryView: View {
             }
             .disabled(selectedRow == nil)
             .help("Copy result text")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("copyResultButton")
 
             Menu {
                 Button("Delete Entry") {
@@ -84,18 +86,32 @@ struct HistoryView: View {
             }
             .disabled(selectedRow == nil)
             .help("Delete the selected entry")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("deleteOptionMenu")
         }
     }
 
     private var alertButtons: some View {
         Group {
-            Button("Cancel", role: .cancel) {}
-            Button("Delete All", role: .destructive) {
-                viewModel.clearHistory()
-                selectedRow = nil
-                viewModel.saveToHistory()
-            }
+            alertCancelButton
+            alertDeleteAllButton
         }
+    }
+
+    private var alertCancelButton: some View {
+        Button("Cancel", role: .cancel) {}
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("alertCancelButton")
+    }
+
+    private var alertDeleteAllButton: some View {
+        Button("Delete All", role: .destructive) {
+            viewModel.clearHistory()
+            selectedRow = nil
+            viewModel.saveToHistory()
+        }
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("alertDeleteAllButton")
     }
 
     private func rowView(_ value: String) -> some View {
@@ -105,6 +121,8 @@ struct HistoryView: View {
                 .foregroundStyle(.secondary)
             Text(value)
         }
+        .accessibilityAddTraits(.isStaticText)
+        .accessibilityElement(children: .ignore)
     }
 
     private func rowContextMenuContent(_ key: String, _ value: String) -> some View {
@@ -127,19 +145,33 @@ struct HistoryView: View {
 
     private func contextMenuCopySection(_ key: String, _ value: String) -> some View {
         Section {
-            Button("Copy Original Text") {
-                viewModel.copyToPasteboard(key)
-            }
-            Button("Copy Result Text") {
-                viewModel.copyToPasteboard(value)
-            }
+            copyOriginalTextButton(key)
+            copyResultTextButton(value)
         }
+    }
+
+    private func copyOriginalTextButton(_ key: String) -> some View {
+        Button("Copy Original Text") {
+            viewModel.copyToPasteboard(key)
+        }
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("copyOriginalTextButton")
+    }
+
+    private func copyResultTextButton(_ value: String) -> some View {
+        Button("Copy Result Text") {
+            viewModel.copyToPasteboard(value)
+        }
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("copyResultTextButton")
     }
 
     private var noEntriesTitle: some View {
         Text("No Entries")
             .font(.title)
             .foregroundStyle(.secondary)
+            .accessibilityAddTraits(.isStaticText)
+            .accessibilityIdentifier("noEntriesTitle")
     }
 
     // MARK: - Helper Functions and Properties
