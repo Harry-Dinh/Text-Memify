@@ -6,19 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		21B7161F2E40397600FFCDA6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21395FEC2D035C6400DF6E8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21395FF32D035C6400DF6E8A;
-			remoteInfo = "Text Memify";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		21395FF42D035C6400DF6E8A /* Text Memify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Text Memify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B716192E40397600FFCDA6 /* TextMemifyHistoryUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextMemifyHistoryUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -27,22 +16,10 @@
 			path = "Text Memify";
 			sourceTree = "<group>";
 		};
-		21B7161A2E40397600FFCDA6 /* TextMemifyHistoryUITest */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TextMemifyHistoryUITest;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		21395FF12D035C6400DF6E8A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21B716162E40397600FFCDA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,7 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				21395FF62D035C6400DF6E8A /* Text Memify */,
-				21B7161A2E40397600FFCDA6 /* TextMemifyHistoryUITest */,
 				21395FF52D035C6400DF6E8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				21395FF42D035C6400DF6E8A /* Text Memify.app */,
-				21B716192E40397600FFCDA6 /* TextMemifyHistoryUITest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,29 +70,6 @@
 			productReference = 21395FF42D035C6400DF6E8A /* Text Memify.app */;
 			productType = "com.apple.product-type.application";
 		};
-		21B716182E40397600FFCDA6 /* TextMemifyHistoryUITest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21B716232E40397600FFCDA6 /* Build configuration list for PBXNativeTarget "TextMemifyHistoryUITest" */;
-			buildPhases = (
-				21B716152E40397600FFCDA6 /* Sources */,
-				21B716162E40397600FFCDA6 /* Frameworks */,
-				21B716172E40397600FFCDA6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21B716202E40397600FFCDA6 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				21B7161A2E40397600FFCDA6 /* TextMemifyHistoryUITest */,
-			);
-			name = TextMemifyHistoryUITest;
-			packageProductDependencies = (
-			);
-			productName = TextMemifyHistoryUITest;
-			productReference = 21B716192E40397600FFCDA6 /* TextMemifyHistoryUITest.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -130,10 +82,6 @@
 				TargetAttributes = {
 					21395FF32D035C6400DF6E8A = {
 						CreatedOnToolsVersion = 16.1;
-					};
-					21B716182E40397600FFCDA6 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 21395FF32D035C6400DF6E8A;
 					};
 				};
 			};
@@ -152,20 +100,12 @@
 			projectRoot = "";
 			targets = (
 				21395FF32D035C6400DF6E8A /* Text Memify */,
-				21B716182E40397600FFCDA6 /* TextMemifyHistoryUITest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		21395FF22D035C6400DF6E8A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21B716172E40397600FFCDA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,22 +122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21B716152E40397600FFCDA6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		21B716202E40397600FFCDA6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21395FF32D035C6400DF6E8A /* Text Memify */;
-			targetProxy = 21B7161F2E40397600FFCDA6 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		213960012D035C6700DF6E8A /* Debug */ = {
@@ -376,40 +301,6 @@
 			};
 			name = Release;
 		};
-		21B716212E40397600FFCDA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W29Q2GKBT5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.harrydinh.TextMemifyHistoryUITest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Text Memify";
-			};
-			name = Debug;
-		};
-		21B716222E40397600FFCDA6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W29Q2GKBT5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.harrydinh.TextMemifyHistoryUITest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Text Memify";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -427,15 +318,6 @@
 			buildConfigurations = (
 				213960042D035C6700DF6E8A /* Debug */,
 				213960052D035C6700DF6E8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21B716232E40397600FFCDA6 /* Build configuration list for PBXNativeTarget "TextMemifyHistoryUITest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21B716212E40397600FFCDA6 /* Debug */,
-				21B716222E40397600FFCDA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

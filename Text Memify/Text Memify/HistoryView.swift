@@ -38,11 +38,13 @@ struct HistoryView: View {
     private var mainListView: some View {
         List(selection: $selectedRow) {
             ForEach(Array(viewModel.memeHistory.values), id: \.self) { value in
-                rowView(value)
-                    .contextMenu {
-                        rowContextMenuContent(getKey(for: value), value)
-                    }
-                    .tag(value)
+                if let key = getKey(for: value) {
+                    rowView(key, value)
+                        .contextMenu {
+                            rowContextMenuContent(key, value)
+                        }
+                        .tag(value)
+                }
             }
         }
         .scrollContentBackground(viewModel.memeHistory.isEmpty ? .hidden : .visible)
@@ -114,9 +116,9 @@ struct HistoryView: View {
         .accessibilityIdentifier("alertDeleteAllButton")
     }
 
-    private func rowView(_ value: String) -> some View {
+    private func rowView(_ key: String, _ value: String) -> some View {
         VStack(alignment: .leading) {
-            Text(getKey(for: value))
+            Text(key)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             Text(value)
@@ -137,7 +139,6 @@ struct HistoryView: View {
             Button("Delete") {
                 if let selectedKey = selectedRow {
                     viewModel.deleteEntry(with: selectedKey)
-                    selectedRow = nil
                 }
             }
         }
@@ -176,9 +177,9 @@ struct HistoryView: View {
 
     // MARK: - Helper Functions and Properties
 
-    private func getKey(for value: String) -> String {
+    private func getKey(for value: String) -> String? {
         guard let firstPair = viewModel.memeHistory.first(where: { $0.value == value }) else {
-            return "NO_KEY_PLACEHOLDER"
+            return nil
         }
         return firstPair.key
     }
