@@ -22,6 +22,10 @@ struct Text_MemifyApp: App {
             ContentView()
                 .windowResizeBehavior(.disabled)
                 .windowFullScreenBehavior(.disabled)
+                .onDisappear {
+                    // Quit the app when the main window is closed
+                    NSApplication.shared.terminate(nil)
+                }
         }
         .defaultSize(width: 450, height: 170)
         .commands {
