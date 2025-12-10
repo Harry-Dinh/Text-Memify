@@ -14,6 +14,8 @@ struct Text_MemifyApp: App {
     
     init() {
         viewModel.selectedOption = viewModel.loadDefaultMemeOption()
+        viewModel.copyToClipboardSettings = UserDefaults.standard.bool(forKey: "copyToClipboardSettings")
+        viewModel.shouldCopyToClipboard = viewModel.copyToClipboardSettings
         viewModel.loadHistory()
     }
     
