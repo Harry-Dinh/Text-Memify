@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var viewModel = TMViewModel.instance
     @Environment(\.openWindow) private var openWindow
     
@@ -18,6 +17,7 @@ struct ContentView: View {
                 originalTextField
                 memeModeSelector
                 resultTextField
+                copyToClipboardToggle
             }
             .textFieldStyle(.roundedBorder)
             .padding()
@@ -57,7 +57,7 @@ struct ContentView: View {
             showHistoryButton
             Spacer()
             clearButton
-            memeAndCopyToClipboardButton
+            memifyButton
         }
     }
 
@@ -77,16 +77,26 @@ struct ContentView: View {
         .accessibilityIdentifier("clearButton")
     }
 
-    private var memeAndCopyToClipboardButton: some View {
-        Button("Meme and Copy to Clipboard") {
-            viewModel.memify()              // Memify the original text
-            viewModel.saveToHistory()       // Save entry to history
-            viewModel.copyToClipboard()     // Copy result text to clipboard
+    private var memifyButton: some View {
+        Button("Memify") {
+            viewModel.memify()                  // Memify the original text
+            viewModel.saveToHistory()           // Save entry to history
+            if viewModel.shouldCopyToClipboard {
+                viewModel.copyToClipboard()     // Copy result text to clipboard
+            }
         }
         .keyboardShortcut(.defaultAction)
         .disabled(viewModel.originalText.isEmpty)
         .accessibilityAddTraits(.isButton)
-        .accessibilityIdentifier("memeAndCopyToClipboardButton")
+        .accessibilityIdentifier("memifyButton")
+    }
+    
+    private var copyToClipboardToggle: some View {
+        Toggle(isOn: $viewModel.shouldCopyToClipboard) {
+            Text("Copy to Clipboard")
+        }
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityIdentifier("copyToClipboardToggle")
     }
 }
 

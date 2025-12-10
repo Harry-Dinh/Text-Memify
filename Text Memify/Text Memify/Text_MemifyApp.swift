@@ -14,6 +14,8 @@ struct Text_MemifyApp: App {
     
     init() {
         viewModel.selectedOption = viewModel.loadDefaultMemeOption()
+        viewModel.copyToClipboardSettings = UserDefaults.standard.bool(forKey: "copyToClipboardSettings")
+        viewModel.shouldCopyToClipboard = viewModel.copyToClipboardSettings
         viewModel.loadHistory()
     }
     
@@ -58,6 +60,10 @@ struct Text_MemifyApp: App {
                     viewModel.clearFields()
                 }
                 .keyboardShortcut("C", modifiers: [.shift, .command])
+                
+                Toggle(isOn: $viewModel.shouldCopyToClipboard) {
+                    Text("Copy to Clipboard After Memify")
+                }
             }
         }
         
