@@ -58,6 +58,10 @@ struct Text_MemifyApp: App {
                     viewModel.clearFields()
                 }
                 .keyboardShortcut("C", modifiers: [.shift, .command])
+                
+                Toggle(isOn: $viewModel.shouldCopyToClipboard) {
+                    Text("Copy to Clipboard After Memify")
+                }
             }
         }
         

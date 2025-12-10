@@ -22,6 +22,7 @@ class TMViewModel {
     public var memeHistory: [String: String] = [:]
     public var storeDuplicates = true
     public var showDeleteAllAlert = false
+    var shouldCopyToClipboard = false
 
     public func memify() {
         switch selectedOption {
