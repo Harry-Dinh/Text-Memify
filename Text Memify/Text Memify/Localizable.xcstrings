@@ -1,0 +1,326 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "format_reversed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(desreveR) Reversed"
+          }
+        }
+      }
+    },
+    "format_up_and_down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up AnD dOwN"
+          }
+        }
+      }
+    },
+    "format_wide_lowercased" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "w i d e"
+          }
+        }
+      }
+    },
+    "format_wide_uppercased" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W I D E"
+          }
+        }
+      }
+    },
+    "label_always_copy_to_clipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always Copy to Clipboard"
+          }
+        }
+      }
+    },
+    "label_cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "label_clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "label_clear_history" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear History"
+          }
+        }
+      }
+    },
+    "label_clear_text_fields" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Text Fields"
+          }
+        }
+      }
+    },
+    "label_copy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "label_copy_original_text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Original Text"
+          }
+        }
+      }
+    },
+    "label_copy_result_text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Result Text"
+          }
+        }
+      }
+    },
+    "label_copy_to_clipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy to Clipboard"
+          }
+        }
+      }
+    },
+    "label_copy_to_clipboard_after_memify" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy to Clipboard After Memify"
+          }
+        }
+      }
+    },
+    "label_default_format" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Format:"
+          }
+        }
+      }
+    },
+    "label_delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "label_delete_all" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All"
+          }
+        }
+      }
+    },
+    "label_delete_entry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Entry"
+          }
+        }
+      }
+    },
+    "label_history" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        }
+      }
+    },
+    "label_meme_format" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meme Format:"
+          }
+        }
+      }
+    },
+    "label_memify" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memify"
+          }
+        }
+      }
+    },
+    "label_menu_format" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format"
+          }
+        }
+      }
+    },
+    "label_no_entries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Entries"
+          }
+        }
+      }
+    },
+    "label_result" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Result:"
+          }
+        }
+      }
+    },
+    "label_show_history" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show History"
+          }
+        }
+      }
+    },
+    "label_store_duplicate_entries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store Duplicate Entries"
+          }
+        }
+      }
+    },
+    "label_text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text:"
+          }
+        }
+      }
+    },
+    "label_tooltip_copy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy the result text to the clipboard"
+          }
+        }
+      }
+    },
+    "label_tooltip_delete_entry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete the selected entry"
+          }
+        }
+      }
+    },
+    "store_duplicate_entries_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When enabled, Text Memify will store entries that have the same original and result text. Original text with different result will still always be stored."
+          }
+        }
+      }
+    },
+    "Text Memify" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Memify"
+          }
+        }
+      }
+    },
+    "title_delete_all_entries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All Entries?"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -42,7 +42,7 @@ struct ContentView: View {
             Text("format_reversed").tag(2)
             Text("format_up_and_down").tag(3)
         } label: {
-            Text("Meme Format:")
+            Text("label_meme_format")
         }
         .accessibilityIdentifier("memeModeSelector")
     }
