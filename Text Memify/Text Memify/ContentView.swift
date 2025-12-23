@@ -31,16 +31,16 @@ struct ContentView: View {
     // MARK: - Subviews
 
     private var originalTextField: some View {
-        TextField("Text:", text: $viewModel.originalText)
+        TextField("label_text", text: $viewModel.originalText)
             .accessibilityIdentifier("originalTextField")
     }
 
     private var memeModeSelector: some View {
         Picker(selection: $viewModel.selectedOption) {
-            Text("w i d e").tag(0)
-            Text("W I D E").tag(1)
-            Text("(desreveR) Reversed").tag(2)
-            Text("Up AnD dOwN").tag(3)
+            Text("format_wide_lowercased").tag(0)
+            Text("format_wide_uppercased").tag(1)
+            Text("format_reversed").tag(2)
+            Text("format_up_and_down").tag(3)
         } label: {
             Text("Meme Format:")
         }
@@ -48,7 +48,7 @@ struct ContentView: View {
     }
 
     private var resultTextField: some View {
-        TextField("Result:", text: $viewModel.resultText)
+        TextField("label_result", text: $viewModel.resultText)
             .accessibilityIdentifier("resultTextField")
     }
 
@@ -62,7 +62,7 @@ struct ContentView: View {
     }
 
     private var showHistoryButton: some View {
-        Button("Show History") {
+        Button("label_show_history") {
             openWindow.callAsFunction(id: TMConstants.HISTORY_WINDOW_ID)
         }
         .accessibilityAddTraits(.isButton)
@@ -70,7 +70,7 @@ struct ContentView: View {
     }
 
     private var clearButton: some View {
-        Button("Clear") {
+        Button("label_clear") {
             viewModel.clearFields()
         }
         .accessibilityAddTraits(.isButton)
@@ -78,7 +78,7 @@ struct ContentView: View {
     }
 
     private var memifyButton: some View {
-        Button("Memify") {
+        Button("label_memify") {
             viewModel.memify()                  // Memify the original text
             viewModel.saveToHistory()           // Save entry to history
             if viewModel.shouldCopyToClipboard {
@@ -93,7 +93,7 @@ struct ContentView: View {
     
     private var copyToClipboardToggle: some View {
         Toggle(isOn: $viewModel.shouldCopyToClipboard) {
-            Text("Copy to Clipboard")
+            Text("label_copy_to_clipboard")
         }
         .accessibilityAddTraits(.isToggle)
         .accessibilityIdentifier("copyToClipboardToggle")
