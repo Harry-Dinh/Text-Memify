@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct Text_MemifyApp: App {
-    
     @State private var viewModel = TMViewModel.instance
     
     init() {
@@ -45,6 +44,7 @@ struct Text_MemifyApp: App {
                     EmptyView()
                 }
                 .pickerStyle(.inline)
+                .accessibilityElement(children: .ignore)
             }
             
             CommandGroup(replacing: .undoRedo) {
@@ -60,10 +60,16 @@ struct Text_MemifyApp: App {
                     viewModel.clearFields()
                 }
                 .keyboardShortcut("C", modifiers: [.shift, .command])
+                .accessibilityLabel(Text("label_clear_text_fields"))
+                .accessibilityAddTraits(.isButton)
+                .accessibilityIdentifier("menuBarClearAllTextFieldsButton")
                 
                 Toggle(isOn: $viewModel.shouldCopyToClipboard) {
                     Text("label_copy_to_clipboard_after_memify")
                 }
+                .accessibilityLabel(Text("label_copy_to_clipboard_after_memify"))
+                .accessibilityAddTraits(.isToggle)
+                .accessibilityIdentifier("menuBarCopyToClipboardToggle")
             }
         }
         
