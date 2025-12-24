@@ -62,6 +62,7 @@ struct HistoryView: View {
             }
             .disabled(selectedRow == nil)
             .help("label_tooltip_copy")
+            .accessibilityLabel(Text("label_copy"))
             .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("copyResultButton")
 
@@ -73,9 +74,16 @@ struct HistoryView: View {
                         viewModel.saveToHistory()
                     }
                 }
+                .accessibilityLabel(Text("label_delete_entry"))
+                .accessibilityAddTraits(.isButton)
+                .accessibilityIdentifier("deleteEntryButton")
+                
                 Button("label_clear_history") {
                     viewModel.showDeleteAllAlert.toggle()
                 }
+                .accessibilityLabel(Text("label_clear_history"))
+                .accessibilityAddTraits(.isButton)
+                .accessibilityIdentifier("clearHistoryButton")
             } label: {
                 Label("label_delete", systemImage: "trash")
             } primaryAction: {
@@ -88,6 +96,7 @@ struct HistoryView: View {
             }
             .disabled(selectedRow == nil)
             .help("label_tooltip_delete_entry")
+            .accessibilityLabel(Text("label_delete"))
             .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("deleteOptionMenu")
         }
@@ -102,6 +111,7 @@ struct HistoryView: View {
 
     private var alertCancelButton: some View {
         Button("label_cancel", role: .cancel) {}
+            .accessibilityLabel(Text("label_cancel"))
             .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("alertCancelButton")
     }
@@ -112,6 +122,7 @@ struct HistoryView: View {
             selectedRow = nil
             viewModel.saveToHistory()
         }
+        .accessibilityLabel(Text("label_delete_all"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("alertDeleteAllButton")
     }
@@ -141,6 +152,9 @@ struct HistoryView: View {
                     viewModel.deleteEntry(with: selectedKey)
                 }
             }
+            .accessibilityLabel(Text("label_delete"))
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("contextMenuDeleteButton")
         }
     }
 
@@ -156,7 +170,7 @@ struct HistoryView: View {
             viewModel.copyToPasteboard(key)
         }
         .accessibilityAddTraits(.isButton)
-        .accessibilityIdentifier("copyOriginalTextButton")
+        .accessibilityIdentifier("contextMenuCopyOriginalTextButton")
     }
 
     private func copyResultTextButton(_ value: String) -> some View {
@@ -164,13 +178,14 @@ struct HistoryView: View {
             viewModel.copyToPasteboard(value)
         }
         .accessibilityAddTraits(.isButton)
-        .accessibilityIdentifier("copyResultTextButton")
+        .accessibilityIdentifier("contextMenuCopyResultTextButton")
     }
 
     private var noEntriesTitle: some View {
         Text("label_no_entries")
             .font(.title)
             .foregroundStyle(.secondary)
+            .accessibilityLabel(Text("label_no_entries"))
             .accessibilityAddTraits(.isStaticText)
             .accessibilityIdentifier("noEntriesTitle")
     }
