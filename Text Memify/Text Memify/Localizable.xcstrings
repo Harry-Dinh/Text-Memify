@@ -44,40 +44,15 @@
         }
       }
     },
-    "format_wide_lowercased" : {
+    "format_wide" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "w i d e"
           }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "r ộ n g"
-          }
         }
       }
-    },
-    "format_wide_uppercased" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "W I D E"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "R Ộ N G"
-          }
-        }
-      }
-    },
-    "Key" : {
-      "extractionState" : "manual"
     },
     "label_always_copy_to_clipboard" : {
       "localizations" : {
@@ -497,6 +472,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Up and Down"
+          }
+        }
+      }
+    },
+    "label_use_uppercase_for_wide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Uppercase"
+          }
+        }
+      }
+    },
+    "label_wide_format_header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wide"
           }
         }
       }

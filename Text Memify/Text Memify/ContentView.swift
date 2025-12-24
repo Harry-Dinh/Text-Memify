@@ -40,8 +40,7 @@ struct ContentView: View {
 
     private var memeModeSelector: some View {
         Picker(selection: $viewModel.selectedOption) {
-            Text("format_wide_lowercased").tag(TMMemeFormats.wideLowercased)
-            Text("format_wide_uppercased").tag(TMMemeFormats.wideUppercased)
+            Text("format_wide").tag(TMMemeFormats.wide)
             Text("format_reversed").tag(TMMemeFormats.reversed)
             Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
         } label: {
@@ -109,15 +108,10 @@ struct ContentView: View {
         .accessibilityIdentifier("copyToClipboardToggle")
     }
     
-    @ViewBuilder
     private var memeModeSelectorSection: some View {
-        if viewModel.selectedOption == .upAndDown {
-            HStack {
-                memeModeSelector
-                formatOptionButton
-            }
-        } else {
+        HStack {
             memeModeSelector
+            formatOptionButton
         }
     }
     
@@ -131,6 +125,7 @@ struct ContentView: View {
                 .accessibilityElement(children: .ignore)
         }
         .buttonStyle(.plain)
+        .disabled(viewModel.selectedOption == .reversed)
         .popover(isPresented: $viewModel.showFormatOptionPopover) {
             FormatOptionView(viewModel)
         }

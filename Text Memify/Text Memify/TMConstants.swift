@@ -19,4 +19,5 @@ class TMConstants {
     
     static let SETTINGS_PANE_WIDTH: CGFloat = 350
     static let MAIN_VIEW_DIMENSION: CGFloat = 500
+    static let GENERAL_GROUP_BOX_PADDING: CGFloat = 5.0
 }
