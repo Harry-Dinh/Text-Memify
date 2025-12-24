@@ -440,6 +440,12 @@
             "state" : "translated",
             "value" : "Copy the result text to the clipboard"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao Chép Kết Quả Vào Bản Sao Chép"
+          }
         }
       }
     },
@@ -449,6 +455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete the selected entry"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xoá Chữ đang Chọn"
           }
         }
       }
@@ -460,12 +472,24 @@
             "state" : "translated",
             "value" : "When enabled, Text Memify will store entries that have the same original and result text. Original text with different result will still always be stored."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khi được kích hoạt, Text Memify sẽ lưu trữ các mục có văn bản gốc và văn bản kết quả giống nhau. Văn bản gốc với kết quả khác nhau vẫn sẽ luôn được lưu trữ."
+          }
         }
       }
     },
     "Text Memify" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Memify"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Text Memify"
@@ -479,6 +503,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete All Entries?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xoá Tất Cả Lịch Sử?"
           }
         }
       }
