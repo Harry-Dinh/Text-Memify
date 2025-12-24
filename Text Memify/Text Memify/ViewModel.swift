@@ -17,7 +17,7 @@ class TMViewModel {
     private let pasteboard = NSPasteboard.general
 
     var originalText = ""
-    var selectedOption: TMMemeFormats = .wideLowercased
+    var selectedOption: TMMemeFormats = .wide
     var resultText = ""
     var memeHistory: [String: String] = [:]
     var storeDuplicates = true
@@ -25,18 +25,15 @@ class TMViewModel {
     var shouldCopyToClipboard = false
     var copyToClipboardSettings = false
     var showFormatOptionPopover = false
+    
+    // Format Options
     var randomizeCaseForUpAndDown = false
+    var useUppercaseForWideFormat = false
 
     public func memify() {
         switch selectedOption {
-        case .wideLowercased:
-            widenText(capitalized: false)
-            canCopyToClipboard = true
-            break
-        case .wideUppercased:
-            widenText(capitalized: true)
-            canCopyToClipboard = true
-            break
+        case .wide:
+            widenText()
         case .reversed:
             resultText = String(originalText.reversed())
             canCopyToClipboard = true
@@ -76,7 +73,7 @@ class TMViewModel {
     
     func loadDefaultMemeOption() -> TMMemeFormats {
         guard let defaultMemeOption = userDefault.value(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY) as? TMMemeFormats else {
-            return .wideLowercased
+            return .wide
         }
         return defaultMemeOption
     }
@@ -122,9 +119,9 @@ class TMViewModel {
         userDefault.removeObject(forKey: TMConstants.ENTRIES_HISTORY_KEY)   // Remove entries from UserDefaults
     }
 
-    private func widenText(capitalized: Bool) {
+    private func widenText() {
         var temp = originalText
-        if capitalized {
+        if useUppercaseForWideFormat {
             temp = temp.uppercased()
         }
         resultText = temp.map { String($0) }.joined(separator: " ")

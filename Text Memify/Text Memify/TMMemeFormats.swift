@@ -6,8 +6,7 @@
 //
 
 enum TMMemeFormats {
-    case wideLowercased
-    case wideUppercased
+    case wide
     case reversed
     case upAndDown
 }

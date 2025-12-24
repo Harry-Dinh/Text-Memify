@@ -40,8 +40,7 @@ struct TMSettingsView: View {
     
     private var memeOptionPicker: some View {
         Picker("label_default_format", selection: $defaultMemeOption) {
-            Text("format_wide_lowercased").tag(TMMemeFormats.wideLowercased)
-            Text("format_wide_uppercased").tag(TMMemeFormats.wideUppercased)
+            Text("format_wide").tag(TMMemeFormats.wide)
             Text("format_reversed").tag(TMMemeFormats.reversed)
             Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
         }
