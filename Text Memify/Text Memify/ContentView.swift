@@ -32,6 +32,7 @@ struct ContentView: View {
 
     private var originalTextField: some View {
         TextField("label_text", text: $viewModel.originalText)
+            .accessibilityLabel(Text("label_text"))
             .accessibilityIdentifier("originalTextField")
     }
 
@@ -44,11 +45,14 @@ struct ContentView: View {
         } label: {
             Text("label_meme_format")
         }
+        .accessibilityLabel(Text("label_meme_format"))
+        .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("memeModeSelector")
     }
 
     private var resultTextField: some View {
         TextField("label_result", text: $viewModel.resultText)
+            .accessibilityLabel(Text("label_result"))
             .accessibilityIdentifier("resultTextField")
     }
 
@@ -65,6 +69,7 @@ struct ContentView: View {
         Button("label_show_history") {
             openWindow.callAsFunction(id: TMConstants.HISTORY_WINDOW_ID)
         }
+        .accessibilityLabel(Text("label_show_history"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("showHistoryButton")
     }
@@ -73,6 +78,7 @@ struct ContentView: View {
         Button("label_clear") {
             viewModel.clearFields()
         }
+        .accessibilityLabel(Text("label_clear"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("clearButton")
     }
@@ -87,6 +93,7 @@ struct ContentView: View {
         }
         .keyboardShortcut(.defaultAction)
         .disabled(viewModel.originalText.isEmpty)
+        .accessibilityLabel(Text("label_memify"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("memifyButton")
     }
@@ -95,6 +102,7 @@ struct ContentView: View {
         Toggle(isOn: $viewModel.shouldCopyToClipboard) {
             Text("label_copy_to_clipboard")
         }
+        .accessibilityLabel(Text("label_copy_to_clipboard"))
         .accessibilityAddTraits(.isToggle)
         .accessibilityIdentifier("copyToClipboardToggle")
     }
