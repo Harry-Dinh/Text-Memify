@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TMSettingsView: View {
-    
     @State private var viewModel = TMViewModel.instance
     @State private var defaultMemeOption = TMViewModel.instance.selectedOption
     
@@ -29,36 +28,44 @@ struct TMSettingsView: View {
     
     private var alwaysCopyToClipboardToggle: some View {
         Toggle(isOn: $viewModel.copyToClipboardSettings) {
-            Text("Always copy to clipboard")
+            Text("label_always_copy_to_clipboard")
         }
         .onChange(of: viewModel.copyToClipboardSettings) { _, updatedValue in
             UserDefaults.standard.set(updatedValue, forKey: "copyToClipboardSettings")
         }
+        .accessibilityLabel(Text("label_always_copy_to_clipboard"))
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityIdentifier("alwaysCopyToClipboardToggle")
     }
     
     private var memeOptionPicker: some View {
-        Picker("Default Format:", selection: $defaultMemeOption) {
-            Text("w i d e").tag(0)
-            Text("W I D E").tag(1)
-            Text("(desreveR) Reversed").tag(2)
-            Text("Up AnD dOwN").tag(3)
+        Picker("label_default_format", selection: $defaultMemeOption) {
+            Text("format_wide").tag(TMMemeFormats.wide)
+            Text("format_reversed").tag(TMMemeFormats.reversed)
+            Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
         }
         .padding(.vertical, 5)
         .onChange(of: defaultMemeOption) {
             // Save the default meme option
             viewModel.saveDefaultMemeOption(defaultMemeOption)
         }
+        .accessibilityLabel(Text("label_default_format"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("memeFormatPicker")
     }
     
     private var storeDuplicatesToggle: some View {
         Toggle(isOn: $viewModel.storeDuplicates) {
             VStack(alignment: .leading) {
-                Text("Store duplicate entries")
-                Text("When enabled, Text Memify will store entries that have the same original and result text. Original text with different result will still always be stored.")
+                Text("label_store_duplicate_entries")
+                Text("store_duplicate_entries_description")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
         }
+        .accessibilityLabel(Text("label_store_duplicate_entries"))
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityIdentifier("storeDuplicateEntriesToggle")
     }
 }
 

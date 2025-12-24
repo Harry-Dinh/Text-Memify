@@ -11,11 +11,13 @@ struct ContentView: View {
     @State private var viewModel = TMViewModel.instance
     @Environment(\.openWindow) private var openWindow
     
+    // MARK: - Main Body
+    
     var body: some View {
         VStack {
             Form {
                 originalTextField
-                memeModeSelector
+                memeModeSelectorSection
                 resultTextField
                 copyToClipboardToggle
             }
@@ -31,24 +33,27 @@ struct ContentView: View {
     // MARK: - Subviews
 
     private var originalTextField: some View {
-        TextField("Text:", text: $viewModel.originalText)
+        TextField("label_text", text: $viewModel.originalText)
+            .accessibilityLabel(Text("label_text"))
             .accessibilityIdentifier("originalTextField")
     }
 
     private var memeModeSelector: some View {
         Picker(selection: $viewModel.selectedOption) {
-            Text("w i d e").tag(0)
-            Text("W I D E").tag(1)
-            Text("(desreveR) Reversed").tag(2)
-            Text("Up AnD dOwN").tag(3)
+            Text("format_wide").tag(TMMemeFormats.wide)
+            Text("format_reversed").tag(TMMemeFormats.reversed)
+            Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
         } label: {
-            Text("Meme Format:")
+            Text("label_meme_format")
         }
+        .accessibilityLabel(Text("label_meme_format"))
+        .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("memeModeSelector")
     }
 
     private var resultTextField: some View {
-        TextField("Result:", text: $viewModel.resultText)
+        TextField("label_result", text: $viewModel.resultText)
+            .accessibilityLabel(Text("label_result"))
             .accessibilityIdentifier("resultTextField")
     }
 
@@ -62,23 +67,25 @@ struct ContentView: View {
     }
 
     private var showHistoryButton: some View {
-        Button("Show History") {
+        Button("label_show_history") {
             openWindow.callAsFunction(id: TMConstants.HISTORY_WINDOW_ID)
         }
+        .accessibilityLabel(Text("label_show_history"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("showHistoryButton")
     }
 
     private var clearButton: some View {
-        Button("Clear") {
+        Button("label_clear") {
             viewModel.clearFields()
         }
+        .accessibilityLabel(Text("label_clear"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("clearButton")
     }
 
     private var memifyButton: some View {
-        Button("Memify") {
+        Button("label_memify") {
             viewModel.memify()                  // Memify the original text
             viewModel.saveToHistory()           // Save entry to history
             if viewModel.shouldCopyToClipboard {
@@ -87,16 +94,44 @@ struct ContentView: View {
         }
         .keyboardShortcut(.defaultAction)
         .disabled(viewModel.originalText.isEmpty)
+        .accessibilityLabel(Text("label_memify"))
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("memifyButton")
     }
     
     private var copyToClipboardToggle: some View {
         Toggle(isOn: $viewModel.shouldCopyToClipboard) {
-            Text("Copy to Clipboard")
+            Text("label_copy_to_clipboard")
         }
+        .accessibilityLabel(Text("label_copy_to_clipboard"))
         .accessibilityAddTraits(.isToggle)
         .accessibilityIdentifier("copyToClipboardToggle")
+    }
+    
+    private var memeModeSelectorSection: some View {
+        HStack {
+            memeModeSelector
+            formatOptionButton
+        }
+    }
+    
+    private var formatOptionButton: some View {
+        Button(action: {
+            viewModel.showFormatOptionPopover.toggle()
+        }) {
+            Image(systemName: "ellipsis")
+                .symbolVariant(.circle)
+                .accessibilityRemoveTraits(.isImage)
+                .accessibilityElement(children: .ignore)
+        }
+        .buttonStyle(.plain)
+        .disabled(viewModel.selectedOption == .reversed)
+        .popover(isPresented: $viewModel.showFormatOptionPopover) {
+            FormatOptionView(viewModel)
+        }
+        .accessibilityLabel(Text("label_format_option"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("formatOptionButton")
     }
 }
 

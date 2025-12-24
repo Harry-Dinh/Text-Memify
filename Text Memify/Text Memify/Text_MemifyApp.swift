@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct Text_MemifyApp: App {
-    
     @State private var viewModel = TMViewModel.instance
     
     init() {
@@ -31,20 +30,19 @@ struct Text_MemifyApp: App {
         }
         .defaultSize(width: 450, height: 170)
         .commands {
-            CommandMenu("Format") {
+            CommandMenu("label_menu_format") {
                 Picker(selection: $viewModel.selectedOption) {
-                    Text("w i d e").tag(0)
+                    Text("format_wide").tag(TMMemeFormats.wide)
                         .keyboardShortcut("1")
-                    Text("W I D E").tag(1)
+                    Text("format_reversed").tag(TMMemeFormats.reversed)
                         .keyboardShortcut("2")
-                    Text("(desreveR) Reversed").tag(2)
+                    Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
                         .keyboardShortcut("3")
-                    Text("Up AnD dOwN").tag(3)
-                        .keyboardShortcut("4")
                 } label: {
                     EmptyView()
                 }
                 .pickerStyle(.inline)
+                .accessibilityElement(children: .ignore)
             }
             
             CommandGroup(replacing: .undoRedo) {
@@ -56,18 +54,24 @@ struct Text_MemifyApp: App {
             }
             
             CommandGroup(replacing: .pasteboard) {
-                Button("Clear Text Fields") {
+                Button("label_clear_text_fields") {
                     viewModel.clearFields()
                 }
                 .keyboardShortcut("C", modifiers: [.shift, .command])
+                .accessibilityLabel(Text("label_clear_text_fields"))
+                .accessibilityAddTraits(.isButton)
+                .accessibilityIdentifier("menuBarClearAllTextFieldsButton")
                 
                 Toggle(isOn: $viewModel.shouldCopyToClipboard) {
-                    Text("Copy to Clipboard After Memify")
+                    Text("label_copy_to_clipboard_after_memify")
                 }
+                .accessibilityLabel(Text("label_copy_to_clipboard_after_memify"))
+                .accessibilityAddTraits(.isToggle)
+                .accessibilityIdentifier("menuBarCopyToClipboardToggle")
             }
         }
         
-        Window("History", id: TMConstants.HISTORY_WINDOW_ID) {
+        Window("label_history", id: TMConstants.HISTORY_WINDOW_ID) {
             HistoryView()
                 .windowFullScreenBehavior(.disabled)
         }
