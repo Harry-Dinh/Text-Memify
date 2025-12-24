@@ -41,6 +41,12 @@
             "state" : "translated",
             "value" : "Randomize Case Order"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sấp Xếp Ngẫu Nhiên"
+          }
         }
       }
     },
@@ -50,6 +56,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "w i d e"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "r ộ n g"
           }
         }
       }
@@ -286,6 +298,12 @@
             "state" : "translated",
             "value" : "Format Option"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tuỳ Chọn Định Dạng"
+          }
         }
       }
     },
@@ -473,6 +491,12 @@
             "state" : "translated",
             "value" : "Up and Down"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lên và Xuống"
+          }
         }
       }
     },
@@ -484,6 +508,12 @@
             "state" : "translated",
             "value" : "Use Uppercase"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dùng Chữ In"
+          }
         }
       }
     },
@@ -494,6 +524,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wide"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rộng"
           }
         }
       }
