@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TMSettingsView: View {
-    
     @State private var viewModel = TMViewModel.instance
     @State private var defaultMemeOption = TMViewModel.instance.selectedOption
     
@@ -34,6 +33,9 @@ struct TMSettingsView: View {
         .onChange(of: viewModel.copyToClipboardSettings) { _, updatedValue in
             UserDefaults.standard.set(updatedValue, forKey: "copyToClipboardSettings")
         }
+        .accessibilityLabel(Text("label_always_copy_to_clipboard"))
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityIdentifier("alwaysCopyToClipboardToggle")
     }
     
     private var memeOptionPicker: some View {
@@ -48,6 +50,9 @@ struct TMSettingsView: View {
             // Save the default meme option
             viewModel.saveDefaultMemeOption(defaultMemeOption)
         }
+        .accessibilityLabel(Text("label_default_format"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("memeFormatPicker")
     }
     
     private var storeDuplicatesToggle: some View {
@@ -59,6 +64,9 @@ struct TMSettingsView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .accessibilityLabel(Text("label_store_duplicate_entries"))
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityIdentifier("storeDuplicateEntriesToggle")
     }
 }
 
