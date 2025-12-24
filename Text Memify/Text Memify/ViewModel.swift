@@ -132,14 +132,18 @@ class TMViewModel {
     
     private func upAndDownText() -> String {
         let temp = originalText
-        var isUpper = false      // Start with lowercase
+        var isUpper = randomizeCaseForUpAndDown ? Bool.random() : false
         return temp.map { char in
             if char.isLetter {
                 let transformedChar = isUpper ? char.uppercased() : char.lowercased()
-                isUpper.toggle()    // Flip the case for the next character
+                if randomizeCaseForUpAndDown {
+                    isUpper = .random()
+                } else {
+                    isUpper.toggle()
+                }
                 return transformedChar
             } else {
-                return String(char)     // Keep non-letter characters unchanged
+                return String(char)
             }
         }.joined()
     }
