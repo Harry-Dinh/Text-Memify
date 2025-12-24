@@ -33,6 +33,17 @@
         }
       }
     },
+    "format_up_and_down_random_case" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Randomize Case Order"
+          }
+        }
+      }
+    },
     "format_wide_lowercased" : {
       "localizations" : {
         "en" : {
@@ -64,6 +75,9 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "label_always_copy_to_clipboard" : {
       "localizations" : {
@@ -289,6 +303,17 @@
         }
       }
     },
+    "label_format_option" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format Option"
+          }
+        }
+      }
+    },
     "label_history" : {
       "localizations" : {
         "en" : {
@@ -461,6 +486,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xoá Chữ đang Chọn"
+          }
+        }
+      }
+    },
+    "label_up_and_down_header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up and Down"
           }
         }
       }
