@@ -32,13 +32,13 @@ struct Text_MemifyApp: App {
         .commands {
             CommandMenu("label_menu_format") {
                 Picker(selection: $viewModel.selectedOption) {
-                    Text("format_wide_lowercased").tag(0)
+                    Text("format_wide_lowercased").tag(TMMemeFormats.wideLowercased)
                         .keyboardShortcut("1")
-                    Text("format_wide_uppercased").tag(1)
+                    Text("format_wide_uppercased").tag(TMMemeFormats.wideUppercased)
                         .keyboardShortcut("2")
-                    Text("format_reversed").tag(2)
+                    Text("format_reversed").tag(TMMemeFormats.reversed)
                         .keyboardShortcut("3")
-                    Text("format_up_and_down").tag(3)
+                    Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
                         .keyboardShortcut("4")
                 } label: {
                     EmptyView()

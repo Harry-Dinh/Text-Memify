@@ -11,11 +11,13 @@ struct ContentView: View {
     @State private var viewModel = TMViewModel.instance
     @Environment(\.openWindow) private var openWindow
     
+    // MARK: - Main Body
+    
     var body: some View {
         VStack {
             Form {
                 originalTextField
-                memeModeSelector
+                memeModeSelectorSection
                 resultTextField
                 copyToClipboardToggle
             }
@@ -38,10 +40,10 @@ struct ContentView: View {
 
     private var memeModeSelector: some View {
         Picker(selection: $viewModel.selectedOption) {
-            Text("format_wide_lowercased").tag(0)
-            Text("format_wide_uppercased").tag(1)
-            Text("format_reversed").tag(2)
-            Text("format_up_and_down").tag(3)
+            Text("format_wide_lowercased").tag(TMMemeFormats.wideLowercased)
+            Text("format_wide_uppercased").tag(TMMemeFormats.wideUppercased)
+            Text("format_reversed").tag(TMMemeFormats.reversed)
+            Text("format_up_and_down").tag(TMMemeFormats.upAndDown)
         } label: {
             Text("label_meme_format")
         }
@@ -105,6 +107,36 @@ struct ContentView: View {
         .accessibilityLabel(Text("label_copy_to_clipboard"))
         .accessibilityAddTraits(.isToggle)
         .accessibilityIdentifier("copyToClipboardToggle")
+    }
+    
+    @ViewBuilder
+    private var memeModeSelectorSection: some View {
+        if viewModel.selectedOption == .upAndDown {
+            HStack {
+                memeModeSelector
+                formatOptionButton
+            }
+        } else {
+            memeModeSelector
+        }
+    }
+    
+    private var formatOptionButton: some View {
+        Button(action: {
+            viewModel.showFormatOptionPopover.toggle()
+        }) {
+            Image(systemName: "ellipsis")
+                .symbolVariant(.circle)
+                .accessibilityRemoveTraits(.isImage)
+                .accessibilityElement(children: .ignore)
+        }
+        .buttonStyle(.plain)
+        .popover(isPresented: $viewModel.showFormatOptionPopover) {
+            FormatOptionView(viewModel)
+        }
+        .accessibilityLabel(Text("label_format_option"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("formatOptionButton")
     }
 }
 
