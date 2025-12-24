@@ -10,47 +10,45 @@ import SwiftUI
 
 @Observable
 class TMViewModel {
-    public static let instance = TMViewModel()
+    static let instance = TMViewModel()
     
     private var canCopyToClipboard = false
     private let userDefault = UserDefaults.standard
     private let pasteboard = NSPasteboard.general
 
-    public var originalText = ""
-    public var selectedOption = 0
-    public var resultText = ""
-    public var memeHistory: [String: String] = [:]
-    public var storeDuplicates = true
-    public var showDeleteAllAlert = false
+    var originalText = ""
+    var selectedOption: TMMemeFormats = .wideLowercased
+    var resultText = ""
+    var memeHistory: [String: String] = [:]
+    var storeDuplicates = true
+    var showDeleteAllAlert = false
     var shouldCopyToClipboard = false
     var copyToClipboardSettings = false
+    var showFormatOptionPopover = false
+    var randomizeCaseForUpAndDown = false
 
     public func memify() {
         switch selectedOption {
-            case 0:
-                widenText(capitalized: false)
-                canCopyToClipboard = true
-                break
-            case 1:
-                widenText(capitalized: true)
-                canCopyToClipboard = true
-                break
-            case 2:
-                resultText = String(originalText.reversed())
-                canCopyToClipboard = true
-                break
-            case 3:
-                resultText = upAndDownText()
-                canCopyToClipboard = true
-                break
-            default:
-                print("Something went wrong...")
-                canCopyToClipboard = false
-                break
+        case .wideLowercased:
+            widenText(capitalized: false)
+            canCopyToClipboard = true
+            break
+        case .wideUppercased:
+            widenText(capitalized: true)
+            canCopyToClipboard = true
+            break
+        case .reversed:
+            resultText = String(originalText.reversed())
+            canCopyToClipboard = true
+            break
+        case .upAndDown:
+            resultText = upAndDownText()
+            canCopyToClipboard = true
+            break
         }
     }
     
-    public func copyToClipboard() {
+    func copyToClipboard() {
         if resultText.isEmpty || !canCopyToClipboard {
             return
         }
@@ -58,7 +56,7 @@ class TMViewModel {
         pasteboard.setString(resultText, forType: .string)
     }
 
-    public func copyToPasteboard(_ text: String?) {
+    func copyToPasteboard(_ text: String?) {
         guard let unwrappedText = text,
               !unwrappedText.isEmpty || canCopyToClipboard else {
             return
@@ -67,20 +65,23 @@ class TMViewModel {
         pasteboard.setString(unwrappedText, forType: .string)
     }
 
-    public func clearFields() {
+    func clearFields() {
         originalText = ""
         resultText = ""
     }
     
-    public func saveDefaultMemeOption(_ memeOption: Int) {
+    func saveDefaultMemeOption(_ memeOption: TMMemeFormats) {
         userDefault.set(memeOption, forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
     }
     
-    public func loadDefaultMemeOption() -> Int {
-        return userDefault.integer(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY)
+    func loadDefaultMemeOption() -> TMMemeFormats {
+        guard let defaultMemeOption = userDefault.value(forKey: TMConstants.DEFAULT_MEME_OPTION_KEY) as? TMMemeFormats else {
+            return .wideLowercased
+        }
+        return defaultMemeOption
     }
     
-    public func saveToHistory() {
+    func saveToHistory() {
         if resultText.isEmpty && originalText.isEmpty {
             return
         }
@@ -96,7 +97,7 @@ class TMViewModel {
         userDefault.set(memeHistory, forKey: TMConstants.ENTRIES_HISTORY_KEY)
     }
     
-    public func loadHistory() {
+    func loadHistory() {
         guard let historyEntries = userDefault.object(forKey: TMConstants.ENTRIES_HISTORY_KEY) as? [String: String] else {
             print("No entries detected in local storage")
             return
@@ -104,7 +105,7 @@ class TMViewModel {
         memeHistory = historyEntries
     }
 
-    public func deleteEntry(with key: String) {
+    func deleteEntry(with key: String) {
         if memeHistory.removeValue(forKey: key) == nil {
             print("Unable to remove entry with key: \(key)")
         } else {
@@ -112,11 +113,11 @@ class TMViewModel {
         }
     }
 
-    public func updateHistoryList() {
+    func updateHistoryList() {
         userDefault.setValue(memeHistory, forKey: TMConstants.ENTRIES_HISTORY_KEY)
     }
 
-    public func clearHistory() {
+    func clearHistory() {
         memeHistory.removeAll()                                             // Remove all entries from dictionary
         userDefault.removeObject(forKey: TMConstants.ENTRIES_HISTORY_KEY)   // Remove entries from UserDefaults
     }
@@ -131,14 +132,18 @@ class TMViewModel {
     
     private func upAndDownText() -> String {
         let temp = originalText
-        var isUpper = false      // Start with lowercase
+        var isUpper = randomizeCaseForUpAndDown ? Bool.random() : false
         return temp.map { char in
             if char.isLetter {
                 let transformedChar = isUpper ? char.uppercased() : char.lowercased()
-                isUpper.toggle()    // Flip the case for the next character
+                if randomizeCaseForUpAndDown {
+                    isUpper = .random()
+                } else {
+                    isUpper.toggle()
+                }
                 return transformedChar
             } else {
-                return String(char)     // Keep non-letter characters unchanged
+                return String(char)
             }
         }.joined()
     }
