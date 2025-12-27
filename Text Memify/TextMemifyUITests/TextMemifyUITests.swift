@@ -16,5 +16,30 @@ class TextMemifyUITests: XCTestCase {
         app.launch()
     }
     
+    func focusOnWindow(_ window: TextMemifyWindows) {
+        let focusedWindow = app.windows[window.rawValue]
+        if focusedWindow.waitForExistence(timeout: 3) {
+            focusedWindow.click()
+        }
+    }
+    
     // MARK: - Sub-test functions
+    
+    func verifyMainWindowContent(withMemeFormatButton: Bool = false) {
+        var elements: [XCUIElement] = [
+            app.textFields["originalTextField"],
+            app.textFields["resultTextField"],
+            app.buttons["showHistoryButton"],
+            app.buttons["clearButton"],
+            app.buttons["memifyButton"],
+        ]
+        
+        if withMemeFormatButton {
+            elements.append(app.buttons["formatOptionButton"])
+        }
+        
+        for element in elements {
+            XCTAssertTrue(element.waitForExistence(timeout: 1), "Element \(element.identifier) not found")
+        }
+    }
 }

@@ -8,5 +8,9 @@
 import XCTest
 
 class TextMemifyNavigationUITests: TextMemifyUITests {
-    
+    func test_verifyMainWindowContent() throws {
+        launchApp()
+        focusOnWindow(.mainWindow)
+        verifyMainWindowContent()
+    }
 }
