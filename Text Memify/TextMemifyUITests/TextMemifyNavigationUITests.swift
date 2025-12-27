@@ -8,5 +8,16 @@
 import XCTest
 
 class TextMemifyNavigationUITests: TextMemifyUITests {
+    func test_verifyMainWindowContent() throws {
+        launchApp()
+        focusOnWindow(.mainWindow)
+        verifyMainWindowContent()
+    }
     
+    func test_verifyHistoryWindowContent() throws {
+        launchApp()
+        focusOnWindow(.mainWindow)
+        navigateToHistoryView()
+        verifyHistoryWindowContent()
+    }
 }

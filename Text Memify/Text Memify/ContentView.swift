@@ -47,7 +47,6 @@ struct ContentView: View {
             Text("label_meme_format")
         }
         .accessibilityLabel(Text("label_meme_format"))
-        .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("memeModeSelector")
     }
 
