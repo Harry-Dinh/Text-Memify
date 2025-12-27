@@ -13,4 +13,11 @@ class TextMemifyNavigationUITests: TextMemifyUITests {
         focusOnWindow(.mainWindow)
         verifyMainWindowContent()
     }
+    
+    func test_verifyHistoryWindowContent() throws {
+        launchApp()
+        focusOnWindow(.mainWindow)
+        navigateToHistoryView()
+        verifyHistoryWindowContent()
+    }
 }

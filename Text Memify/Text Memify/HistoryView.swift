@@ -51,6 +51,7 @@ struct HistoryView: View {
         .background(Color.clear)
         .listStyle(.inset)
         .searchable(text: $searchText)
+        .accessibilityIdentifier("historyList")
     }
 
     private func toolbarItems(_ value: String?) -> some View {

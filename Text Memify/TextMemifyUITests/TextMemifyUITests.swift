@@ -42,4 +42,22 @@ class TextMemifyUITests: XCTestCase {
             XCTAssertTrue(element.waitForExistence(timeout: 1), "Element \(element.identifier) not found")
         }
     }
+    
+    func navigateToHistoryView() {
+        let showHistoryButton = app.buttons["showHistoryButton"]
+        XCTAssertTrue(showHistoryButton.waitForExistence(timeout: 1), "Show History button not found")
+        showHistoryButton.click()
+        focusOnWindow(.history)
+    }
+    
+    func verifyHistoryWindowContent() {
+        let elements = [
+            app.buttons["copyResultButton"],
+            app.searchFields.firstMatch
+        ]
+        
+        for element in elements {
+            XCTAssertTrue(element.waitForExistence(timeout: 1), "Element \(element.identifier) not found")
+        }
+    }
 }
