@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		21BEE77C2F009727005AC8EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21395FEC2D035C6400DF6E8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21395FF32D035C6400DF6E8A;
+			remoteInfo = "Text Memify";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		21395FF42D035C6400DF6E8A /* Text Memify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Text Memify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21BEE7762F009727005AC8EB /* TextMemifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextMemifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = "Text Memify";
 			sourceTree = "<group>";
 		};
+		21BEE7772F009727005AC8EB /* TextMemifyUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TextMemifyUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		21395FF12D035C6400DF6E8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21BEE7732F009727005AC8EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				21395FF62D035C6400DF6E8A /* Text Memify */,
+				21BEE7772F009727005AC8EB /* TextMemifyUITests */,
 				21395FF52D035C6400DF6E8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				21395FF42D035C6400DF6E8A /* Text Memify.app */,
+				21BEE7762F009727005AC8EB /* TextMemifyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 21395FF42D035C6400DF6E8A /* Text Memify.app */;
 			productType = "com.apple.product-type.application";
 		};
+		21BEE7752F009727005AC8EB /* TextMemifyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21BEE7802F009727005AC8EB /* Build configuration list for PBXNativeTarget "TextMemifyUITests" */;
+			buildPhases = (
+				21BEE7722F009727005AC8EB /* Sources */,
+				21BEE7732F009727005AC8EB /* Frameworks */,
+				21BEE7742F009727005AC8EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21BEE77D2F009727005AC8EB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				21BEE7772F009727005AC8EB /* TextMemifyUITests */,
+			);
+			name = TextMemifyUITests;
+			packageProductDependencies = (
+			);
+			productName = TextMemifyUITests;
+			productReference = 21BEE7762F009727005AC8EB /* TextMemifyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -77,11 +125,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					21395FF32D035C6400DF6E8A = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					21BEE7752F009727005AC8EB = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 21395FF32D035C6400DF6E8A;
 					};
 				};
 			};
@@ -101,12 +153,20 @@
 			projectRoot = "";
 			targets = (
 				21395FF32D035C6400DF6E8A /* Text Memify */,
+				21BEE7752F009727005AC8EB /* TextMemifyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		21395FF22D035C6400DF6E8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21BEE7742F009727005AC8EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,7 +183,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BEE7722F009727005AC8EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		21BEE77D2F009727005AC8EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21395FF32D035C6400DF6E8A /* Text Memify */;
+			targetProxy = 21BEE77C2F009727005AC8EB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		213960012D035C6700DF6E8A /* Debug */ = {
@@ -304,6 +379,46 @@
 			};
 			name = Release;
 		};
+		21BEE77E2F009727005AC8EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XZL6566J6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrydinh.TextMemifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Text Memify";
+			};
+			name = Debug;
+		};
+		21BEE77F2F009727005AC8EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XZL6566J6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrydinh.TextMemifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Text Memify";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -321,6 +436,15 @@
 			buildConfigurations = (
 				213960042D035C6700DF6E8A /* Debug */,
 				213960052D035C6700DF6E8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21BEE7802F009727005AC8EB /* Build configuration list for PBXNativeTarget "TextMemifyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21BEE77E2F009727005AC8EB /* Debug */,
+				21BEE77F2F009727005AC8EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
